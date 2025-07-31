@@ -1,6 +1,8 @@
+import qs from 'qs';
+
 /**
- * @param {string} path
- * @returns {string}
+ * @param {string} path - Path endpoint (misal: "/api/posts").
+ * @returns {string} URL lengkap.
  */
 export function getStrapiURL(path = "") {
   return `${
@@ -9,10 +11,10 @@ export function getStrapiURL(path = "") {
 }
 
 /**
- * @param {string} path
- * @param {object} urlParamsObject
- * @param {object} options
- * @returns {Promise<any>}
+ * @param {string} path - Path endpoint yang ingin di-fetch.
+ * @param {object} urlParamsObject - Parameter query untuk URL.
+ * @param {object} options - Opsi tambahan untuk fetch, termasuk revalidate dari Next.js.
+ * @returns {Promise<any>} Data JSON dari response.
  */
 export async function fetchAPI(path: string, urlParamsObject = {}, options = {}) {
   const mergedOptions = {
@@ -22,7 +24,8 @@ export async function fetchAPI(path: string, urlParamsObject = {}, options = {})
     ...options,
   };
 
-  const queryString = new URLSearchParams(urlParamsObject).toString();
+  const queryString = qs.stringify(urlParamsObject);
+
   const requestUrl = `${getStrapiURL(
     `${path}${queryString ? `?${queryString}` : ""}`
   )}`;
@@ -30,7 +33,8 @@ export async function fetchAPI(path: string, urlParamsObject = {}, options = {})
   const response = await fetch(requestUrl, mergedOptions);
 
   if (!response.ok) {
-    console.error(response.statusText);
+    console.error("API Response Error:", await response.text());
+    console.error("Request URL:", requestUrl);
     throw new Error(`An error occurred please try again`);
   }
 

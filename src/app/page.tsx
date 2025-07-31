@@ -8,15 +8,12 @@ import HomePageClient from '../components/HomePageClient';
 export default async function HomePage() {
   
   const [homepageRes, galleryRes] = await Promise.all([
-    fetchAPI("/api/profil-desa", {}, { next: { revalidate: 60 } }),
+    fetchAPI("/api/profil-desa", { populate: "heroImage" }, { next: { revalidate: 60 } }),
     fetchAPI("/api/gallery", { populate: "*" }, { next: { revalidate: 60 } }),
   ]);
 
   const homepage = homepageRes.data;
   const gallery = galleryRes.data;
-
-  console.log('Homepage Data:', homepage);
-  console.log('Gallery Data:', gallery);
 
   return (
     <>

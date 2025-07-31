@@ -11,7 +11,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Home', href: '/' },
-  { label: 'Profil Desa', href: '/profil' },
+  { label: 'Profil Desa', href: '/profil-desa' },
   { label: 'Infografis', href: '/infografis' },
   { label: 'Berita', href: '/berita' },
 ];
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-sky-100 text-gray-800 shadow-md sticky top-0 z-50">
+    <header className="bg-sky-800 text-gray-800 shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-24">
           
@@ -35,10 +35,10 @@ const Header: React.FC = () => {
                           height={38}
                 />
                 <div className="flex flex-col">
-                  <span className="font-bold text-xl text-sky-900">
+                  <span className="font-bold text-xl text-white">
                     Desa Gaya Baru
                   </span>
-                  <span className="font-medium text-sm text-gray-800">
+                  <span className="font-medium text-sm text-white">
                     Kabupaten Buton Selatan
                   </span>
                 </div>
@@ -52,7 +52,7 @@ const Header: React.FC = () => {
                 <li key={item.label}>
                   <Link 
                     href={item.href} 
-                    className="font-bold text-gray-700 hover:text-sky-700 transition-colors duration-300"
+                    className="font-bold text-gray-100 hover:text-sky-400 transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -65,7 +65,7 @@ const Header: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Buka menu utama</span>
@@ -91,7 +91,7 @@ const Header: React.FC = () => {
               <li key={item.label}>
                 <Link 
                   href={item.href} 
-                  className="block px-3 py-2 rounded-md text-base font-bold text-gray-700 hover:text-sky-800 hover:bg-sky-300 transition-colors duration-300"
+                  className="block px-3 py-2 rounded-md text-white font-bold text-gray-700 hover:text-sky-800 hover:bg-sky-300 transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}

@@ -14,7 +14,7 @@ import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-rendere
 
 import { getStrapiURL } from '../lib/api';
 
-interface PhotoItem {
+interface StrapiMedia {
   id: number;
   url: string;
   alternativeText: string | null;
@@ -25,10 +25,11 @@ interface PhotoItem {
 interface HomePageClientProps {
   homepage: {
     deskripsiDesa: BlocksContent; 
-    sejarahDesa: BlocksContent;  
+    sejarahDesa: BlocksContent;
+    heroImage: StrapiMedia;
   };
   gallery: {
-    photos: PhotoItem[];
+    photos: StrapiMedia[];
   };
 }
 
@@ -36,13 +37,14 @@ const MapWithNoSSR = dynamic(() => import('../components/Map'), {
   ssr: false,
 });
 
-const HeroSection = () => (
+const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
     <section 
-      className="relative h-[60vh] md:h-[80vh] flex items-center bg-cover bg-center"
-      style={{ backgroundImage: `url('https://images.unsplash.com/photo-1534202230481-c99b34f861b1?q=80&w=2070&auto=format&fit=crop')` }}
+      className="relative h-[60vh] md:h-[100vh] flex items-center bg-cover bg-center transition-all duration-500"
+      style={{ backgroundImage: `url('${imageUrl}')` }}
+      aria-label="Pemandangan Desa Gaya Baru"
     >
-      <div className="absolute inset-0 bg-black/50"></div>
-      <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 bg-black/30"></div>
+      <div className="relative container my-auto mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl text-white">
           <h1 className="text-4xl md:text-6xl font-light tracking-wider">
             Selamat Datang di
@@ -55,10 +57,19 @@ const HeroSection = () => (
     </section>
   );
   
-  const Section: React.FC<{ title: string; children: React.ReactNode; className?: string }> = ({ title, children, className }) => (
+  interface SectionProps {
+    title: string;
+    children: React.ReactNode;
+    className?: string;
+    titleAlign?: 'left' | 'center';
+  }
+
+  const Section: React.FC<SectionProps> = ({ title, children, className, titleAlign = 'center' }) => (
     <section className={`py-16 md:py-24 ${className || 'bg-white'}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-sky-900 mb-12">
+        <h2 className={`text-3xl md:text-4xl font-bold text-sky-900 mb-12 ${
+          titleAlign === 'left' ? 'text-left' : 'text-center'
+        }`}>
           {title}
         </h2>
         {children}
@@ -83,7 +94,7 @@ const HeroSection = () => (
     </Section>
   );
   
-  const GallerySection: React.FC<{ images: { photos: PhotoItem[] } }> = ({ images }) => (
+  const GallerySection: React.FC<{ images: { photos: StrapiMedia[] } }> = ({ images }) => (
     <Section title="Galeri Foto">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
@@ -120,14 +131,18 @@ const HeroSection = () => (
       </Swiper>
     </Section>
   );
+  
 
 const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) => {
+    const heroImageUrl = getStrapiURL(homepage.heroImage?.url);
+    console.log('Hompage hero image:', heroImageUrl);
+
     return (
         <>
-            <HeroSection />
+            <HeroSection imageUrl={heroImageUrl} />
 
-            <Section title="Deskripsi Desa">
-                <div className="prose lg:prose-xl mx-auto text-center text-gray-700">
+            <Section title="Deskripsi Desa" titleAlign="left">
+                <div className="prose lg:prose-xl mx  -auto text-justify text-gray-800">
                     {homepage.deskripsiDesa && <BlocksRenderer content={homepage.deskripsiDesa} />}
                 </div>
             </Section>
@@ -135,13 +150,13 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
             <VideoSection />
 
             <Section title="Peta Desa Gaya Baru">
-            <div className="h-[500px] w-full max-w-6xl mx-auto rounded-lg shadow-lg overflow-hidden">
-                <MapWithNoSSR />
-            </div>
+            <div className="relative z-10 h-[500px] w-full max-w-6xl mx-auto rounded-lg shadow-lg overflow-hidden">
+                 <MapWithNoSSR />
+              </div>
             </Section>
             
-            <Section title="Sejarah Desa Gaya Baru" className="bg-sky-50">
-                <div className="prose lg:prose-xl mx-auto text-center text-gray-700">
+            <Section title="Sejarah Desa Gaya Baru" className="bg-sky-50" titleAlign="left">
+                <div className="prose lg:prose-xl mx-auto text-justify text-gray-800">
                     {homepage.sejarahDesa && <BlocksRenderer content={homepage.sejarahDesa} />}
                 </div>
             </Section>
