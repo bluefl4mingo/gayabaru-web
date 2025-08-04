@@ -11,7 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell} from 'recharts';
-import { Users, House, Venus, Mars, BookOpen, Briefcase, ChartColumnIncreasing } from 'lucide-react';
+import { Users, House, Venus, Mars, Briefcase, ChartColumnIncreasing } from 'lucide-react';
 import { MdTempleHindu, MdChurch, MdMosque, MdTempleBuddhist } from "react-icons/md";
 import { GiShintoShrine, GiPrayer  } from "react-icons/gi";
 import { BiSolidBible } from "react-icons/bi";
@@ -76,30 +76,6 @@ interface ClientProps {
   data2: InfographicData2;
 }
 
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
-
-const fadeIn = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.8, ease: "easeOut" }
-};
-
-const slideInLeft = {
-  initial: { opacity: 0, x: -60 },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.7, ease: "easeOut" }
-};
-
-const scaleIn = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
 
 const StatCard = ({ icon, title, value, unit }: { icon: React.ReactNode, title: string, value: number, unit: string }) => (
   <motion.div

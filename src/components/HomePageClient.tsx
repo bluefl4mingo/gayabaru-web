@@ -42,36 +42,6 @@ const MapWithNoSSR = dynamic(() => import('../components/Map'), {
   ssr: false,
 });
 
-// Animation variants
-const fadeInUp = {
-  initial: { opacity: 0, y: 60 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
-
-const fadeIn = {
-  initial: { opacity: 0 },
-  animate: { opacity: 1 },
-  transition: { duration: 0.8, ease: "easeOut" }
-};
-
-const slideInLeft = {
-  initial: { opacity: 0, x: -60 },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.7, ease: "easeOut" }
-};
-
-const slideInRight = {
-  initial: { opacity: 0, x: 60 },
-  animate: { opacity: 1, x: 0 },
-  transition: { duration: 0.7, ease: "easeOut" }
-};
-
-const scaleIn = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: { opacity: 1, scale: 1 },
-  transition: { duration: 0.6, ease: "easeOut" }
-};
 
 const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
     <motion.section 
@@ -213,7 +183,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
             1080: { slidesPerView: 2, spaceBetween: 30 },
           }}
         >
-          {images && images.photos && images.photos.map((image, index) => (
+          {images && images.photos && images.photos.map((image) => (
             <SwiperSlide key={image.id} className="rounded-lg overflow-hidden bg-gray-200">
               {image.url && (
                 <div className="relative w-full h-full">

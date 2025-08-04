@@ -9,13 +9,12 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-renderer';
+import { type BlocksContent } from '@strapi/blocks-react-renderer';
 import { Calendar, Newspaper } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -58,17 +57,6 @@ const cardVariants = {
     opacity: 1, 
     y: 0, 
     scale: 1
-  }
-};
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
   }
 };
 
@@ -176,7 +164,6 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
 };
 
 export default function BeritaClient({ berita, pagination }: ClientProps) {
-  const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 

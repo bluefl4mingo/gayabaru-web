@@ -53,16 +53,6 @@ const photoVariants = {
   }
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2
-    }
-  }
-};
 
 export default function GaleriClient({ gallery }: ClientProps) {
   const [lightboxIndex, setLightboxIndex] = useState(-1);

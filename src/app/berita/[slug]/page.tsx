@@ -65,7 +65,7 @@ async function getRecentArticles(currentSlug: string) {
     return res.data as RecentArticle[];
 }
 
-export async function generateMetadata({ params }: PageProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const article = await getArticleBySlug(params.slug);
 
   if (!article) {

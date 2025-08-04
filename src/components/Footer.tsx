@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Phone, Mail, Instagram, Facebook, Youtube, Twitter, MessageCircle } from 'lucide-react';
+import { Phone, Mail, Instagram, Facebook, Youtube, Twitter } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
