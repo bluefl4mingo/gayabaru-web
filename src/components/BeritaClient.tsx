@@ -3,7 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 import { getStrapiURL } from '@/lib/api';
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import {
