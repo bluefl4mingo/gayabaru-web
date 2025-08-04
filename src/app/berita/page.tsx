@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 };
 
 interface BeritaPageProps {
-  searchParams?: {
+  searchParams?: Promise<{
     page?: string;
-  };
+  }>;
 }
 
 async function getBerita(page: number) {
@@ -41,7 +41,8 @@ async function getBerita(page: number) {
 }
 
 export default async function BeritaPage({ searchParams }: BeritaPageProps) {
-  const currentPage = Number(searchParams?.page) || 1;
+  const resolvedSearchParams = await searchParams;
+  const currentPage = Number(resolvedSearchParams?.page) || 1;
   const beritaData = await getBerita(currentPage);
 
   return (
