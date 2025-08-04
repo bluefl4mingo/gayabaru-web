@@ -8,7 +8,7 @@ import { BlocksRenderer, type BlocksContent } from '@strapi/blocks-react-rendere
 import { Calendar, Newspaper, Home } from 'lucide-react';
 
 interface PageProps {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }
 
 interface StrapiMedia {
@@ -66,7 +66,8 @@ async function getRecentArticles(currentSlug: string) {
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const article = await getArticleBySlug(params.slug);
+  const { slug } = await params;
+  const article = await getArticleBySlug(slug);
 
   if (!article) {
     return {
@@ -82,10 +83,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function BeritaDetailPage({ params }: { params: { slug: string } }) {
+export default async function BeritaDetailPage({ params }: PageProps) {
+  const { slug } = await params;
   const [article, recentArticles] = await Promise.all([
-    getArticleBySlug(params.slug),
-    getRecentArticles(params.slug)
+    getArticleBySlug(slug),
+    getRecentArticles(slug)
   ]);
 
   if (!article) {
