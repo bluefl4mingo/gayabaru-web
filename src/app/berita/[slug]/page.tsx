@@ -145,7 +145,7 @@ export default async function BeritaDetailPage({ params }: PageProps) {
               )}
 
               {/* Konten Teks Berita */}
-              <div className="font-body2 prose prose-lg max-w-none prose-p:text-slate-700 prose-headings:text-slate-800">
+              <div className="font-body2 prose prose-lg max-w-none prose-p:text-slate-700 prose-headings:text-slate-800 text-justify">
                 <BlocksRenderer content={textContent} />
               </div>
             </article>

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 async function getProfilData() {
   try {
-    const res = await fetchAPI("/api/profil-desa", { populate: "*" }, { next: { revalidate: 60 } });
+    const res = await fetchAPI("/api/profil-desa", { populate: "*" }, { next: { revalidate: 21600 } });
 
     if (!res?.data) {
       throw new Error("Failed to fetch profil desa data");

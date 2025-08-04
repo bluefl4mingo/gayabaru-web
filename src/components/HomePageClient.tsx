@@ -224,12 +224,6 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
         <>
             <HeroSection imageUrl={heroImageUrl} />
 
-            {/* <Section title="Deskripsi Desa" titleAlign="left">
-                <div className="prose lg:prose-xl mx-auto text-justify text-gray-800">
-                    {homepage.deskripsiDesa && <BlocksRenderer content={homepage.deskripsiDesa} />}
-                </div>
-            </Section> */}
-
             <motion.section 
               className="my-16 md:my-24"
               initial={{ opacity: 0, y: 50 }}
@@ -268,7 +262,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                     transition={{ duration: 0.7, delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <div className="prose lg:prose-xl font-body2 font-medium mx-auto pr-10 text-justify text-gray-700">
+                    <div className="prose lg:prose-xl font-body2 font-medium mx-auto pr-10 text-justify text-gray-700 text-lg">
                       {homepage.deskripsiDesa && <BlocksRenderer content={homepage.deskripsiDesa} />}
                     </div>
                   </motion.div>
@@ -311,12 +305,6 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                  <MapWithNoSSR />
               </motion.div>
             </Section>
-
-            {/* <Section title="Sejarah Desa Gaya Baru" className="bg-sky-50" titleAlign="left">
-                <div className="prose lg:prose-xl mx-auto text-justify text-gray-800">
-                    {homepage.sejarahDesa && <BlocksRenderer content={homepage.sejarahDesa} />}
-                </div>
-            </Section> */}
 
             <GallerySection images={gallery} />
         </>

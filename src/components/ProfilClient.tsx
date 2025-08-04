@@ -164,7 +164,7 @@ export default function ProfilClient({ data }: ClientProps) {
           >
             <Card>
               <CardHeader><CardTitle className="text-2xl md:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Visi</CardTitle></CardHeader>
-              <CardContent className="prose text-lg/6 text-gray-700 font-medium font-body2 max-w-none">
+              <CardContent className="prose text-lg/6 text-gray-700 text-justify font-medium font-body2 max-w-none">
                 {data.visi && <BlocksRenderer content={data.visi} />}
               </CardContent>
             </Card>
@@ -177,7 +177,7 @@ export default function ProfilClient({ data }: ClientProps) {
           >
             <Card>
               <CardHeader><CardTitle className="text-2xl md:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Misi</CardTitle></CardHeader>
-              <CardContent className="prose text-lg/6 text-gray-700 font-medium font-body2 max-w-none">
+              <CardContent className="prose text-lg text-gray-700 font-medium font-body2 max-w-none">
                 {data.misi && <BlocksRenderer content={data.misi} />}
               </CardContent>
             </Card>

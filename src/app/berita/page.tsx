@@ -28,7 +28,7 @@ async function getBerita(page: number) {
       },
     };
 
-    const res = await fetchAPI("/api/beritas", params, { next: { revalidate: 60 } });
+    const res = await fetchAPI("/api/beritas", params, { next: { revalidate: 3600 } });
 
     if (!res) {
       throw new Error("Failed to fetch news data");

@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 async function getGalleryData() {
   try {
-    const res = await fetchAPI("/api/gallery", { populate: 'photos' }, { next: { revalidate: 60 } });
-    
+    const res = await fetchAPI("/api/gallery", { populate: 'photos' }, { next: { revalidate: 3600 } });
+
     if (!res?.data?.photos) {
       throw new Error("Failed to fetch gallery photos");
     }

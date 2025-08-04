@@ -136,7 +136,7 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
             </motion.h3>
           </Link>
           <motion.p 
-            className="text-sm text-slate-600 font-body2 line-clamp-3"
+            className="text-sm text-slate-600 font-body2 line-clamp-3 text-justify"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}

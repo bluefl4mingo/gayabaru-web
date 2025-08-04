@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 async function getInfographicsData() {
   try {
     const [infographic1Res, infographic2Res] = await Promise.all([
-      fetchAPI("/api/infographic", {}, { next: { revalidate: 60 } }),
-      fetchAPI("/api/infographic2", {}, { next: { revalidate: 60 } }),
+      fetchAPI("/api/infographic", {}, { next: { revalidate: 86400 } }),
+      fetchAPI("/api/infographic2", {}, { next: { revalidate: 86400 } }),
     ]);
 
     if (!infographic1Res?.data || !infographic2Res?.data) {
