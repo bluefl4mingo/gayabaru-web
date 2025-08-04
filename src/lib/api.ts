@@ -13,11 +13,21 @@ export function getStrapiURL(path: string = ""): string {
   return `${STRAPI_URL}${path}`;
 }
 
+// Define proper types for Strapi parameters
+interface StrapiParamValueBase {
+  [key: string]: StrapiParamValue;
+}
+type StrapiParamValue = string | number | boolean | null | undefined | StrapiParamValue[] | StrapiParamValueBase;
+
+interface StrapiParams {
+  [key: string]: StrapiParamValue;
+}
+
 // Helper function to properly format Strapi query parameters
-function formatStrapiParams(params: Record<string, any>): URLSearchParams {
+function formatStrapiParams(params: StrapiParams): URLSearchParams {
   const searchParams = new URLSearchParams();
 
-  function addParam(key: string, value: any, prefix = '') {
+  function addParam(key: string, value: StrapiParamValue, prefix = '') {
     const fullKey = prefix ? `${prefix}[${key}]` : key;
 
     if (value === null || value === undefined) {
@@ -46,7 +56,7 @@ function formatStrapiParams(params: Record<string, any>): URLSearchParams {
 
 export async function fetchAPI(
   path: string,
-  params: Record<string, any> = {},
+  params: StrapiParams = {},
   options: RequestInit = {}
 ) {
   // Get the API token from environment variables
@@ -73,6 +83,10 @@ export async function fetchAPI(
       ...defaultOptions.headers,
       ...options.headers,
     },
+    next: {
+      ...defaultOptions.next,
+      ...options.next,
+    },
   };
 
   // Use the proper Strapi parameter formatting
@@ -98,4 +112,23 @@ export async function fetchAPI(
     console.error('🚨 API fetch error:', error);
     throw error;
   }
+}
+
+// Specific functions with different cache times
+export async function getStaticContent(path: string, params: StrapiParams = {}) {
+  return fetchAPI(path, params, {
+    next: { revalidate: 86400 } // 24 hours for static content
+  });
+}
+
+export async function getDynamicContent(path: string, params: StrapiParams = {}) {
+  return fetchAPI(path, params, {
+    next: { revalidate: 3600 } // 1 hour for dynamic content
+  });
+}
+
+export async function getFrequentContent(path: string, params: StrapiParams = {}) {
+  return fetchAPI(path, params, {
+    next: { revalidate: 1800 } // 30 minutes for frequently changing content
+  });
 }

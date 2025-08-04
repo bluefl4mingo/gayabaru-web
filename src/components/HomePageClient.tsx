@@ -142,7 +142,6 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
-          whileHover={{ scale: 1.02 }}
         >
           <iframe
             width="100%"
@@ -300,7 +299,6 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.05 }}
                 viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
               >
                  <MapWithNoSSR />
               </motion.div>
