@@ -1,23 +1,25 @@
-// app/berita/page.tsx
 import React from 'react';
-import Header from '@/components/Header'; // Sesuaikan path jika perlu
-import { fetchAPI } from '@/lib/api'; // Sesuaikan path jika perlu
-import BeritaClient from '@/components/BeritaClient'; // Komponen UI yang akan kita buat
+import { Metadata } from 'next';
+import { fetchAPI } from '@/lib/api';
+import BeritaClient from '@/components/BeritaClient';
 
-// Tipe data untuk props halaman, termasuk parameter pencarian (untuk paginasi)
+export const metadata: Metadata = {
+  title: "Berita - Website Resmi Desa Gaya Baru",
+  description: "Website Resmi Desa Gaya Baru",
+};
+
 interface BeritaPageProps {
   searchParams?: {
     page?: string;
   };
 }
 
-// Fungsi untuk mengambil data berita dari Strapi
 async function getBerita(page: number) {
-  const PAGE_SIZE = 6; // Jumlah berita per halaman, bisa disesuaikan
+  const PAGE_SIZE = 6; // Jumlah berita per halaman
 
   try {
     const params = {
-      sort: { datePublished: 'desc' }, // Urutkan dari yang terbaru
+      sort: { datePublished: 'desc' },
       populate: '*',
 
       pagination: {
@@ -39,10 +41,8 @@ async function getBerita(page: number) {
 }
 
 export default async function BeritaPage({ searchParams }: BeritaPageProps) {
-  // Tentukan halaman saat ini dari URL, default ke halaman 1
   const currentPage = Number(searchParams?.page) || 1;
   const beritaData = await getBerita(currentPage);
-  console.log("Berita Data:", beritaData);
 
   return (
     <>
@@ -52,11 +52,6 @@ export default async function BeritaPage({ searchParams }: BeritaPageProps) {
           pagination={beritaData.meta.pagination}
         />
       </main>
-      <footer className="bg-sky-900 text-white py-8">
-        <div className="container mx-auto text-center">
-            <p>© {new Date().getFullYear()} Pemerintah Desa Gaya Baru. All rights reserved.</p>
-        </div>
-      </footer>
     </>
   );
 }

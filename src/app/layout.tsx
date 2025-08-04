@@ -1,17 +1,37 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Oswald, Quattrocento, Montserrat, Hind } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import NextTopLoader from 'nextjs-toploader';
+import WhatsAppButton from "@/components/WhatsAppButton";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const oswald = Oswald({ 
   subsets: ["latin"],
+  display: 'swap',
+  variable: '--font-oswald',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const quattrocento = Quattrocento({
   subsets: ["latin"],
+  weight: ['400', '700'],
+  display: 'swap',
+  variable: '--font-quattrocento',
+});
+
+const montserrat = Montserrat({ 
+  subsets: ["latin"],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
+
+const hind = Hind({ 
+  subsets: ["latin"],
+  weight: ['300', '400', '500', '600', '700'],
+  display: 'swap',
+  variable: '--font-hind',
 });
 
 export const metadata: Metadata = {
@@ -27,10 +47,22 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${oswald.variable} ${quattrocento.variable} ${montserrat.variable} ${hind.variable} antialiased`} suppressHydrationWarning={true}
       >
         <Header />
+        <NextTopLoader
+          color="#FFFFFF"
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #FFFFFF, 0 0 5px #FFFFFF" 
+        />
         {children}
+        <WhatsAppButton />
+        <Footer />
       </body>
     </html>
   );

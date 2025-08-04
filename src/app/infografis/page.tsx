@@ -1,7 +1,12 @@
 import React from 'react';
-import Header from '@/components/Header';
+import { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api';
-import InfographicsClient from '@/components/InfographicsClient';
+import InfographicsClient from '@/components/InfografisClient';
+
+export const metadata: Metadata = {
+  title: "Infografis - Website Resmi Desa Gaya Baru",
+  description: "Website Resmi Desa Gaya Baru",
+};
 
 async function getInfographicsData() {
   try {
@@ -34,7 +39,7 @@ export default async function InfographicsPage() {
     return (
       <>
         <div className="container mx-auto py-12 text-center">
-          <h1 className="text-4xl font-bold">Gagal memuat data infografis.</h1>
+          <h1 className="text-4xl font-bold font-heading2">Gagal memuat data infografis.</h1>
           <p>Silakan coba lagi nanti.</p>
         </div>
       </>
@@ -44,10 +49,7 @@ export default async function InfographicsPage() {
   return (
     <>
       <main className="bg-slate-50">
-        <div className="container mx-auto py-10 px-4">
-          <h1 className="text-4xl font-bold text-center mb-12 text-slate-800">
-            Infografis Kependudukan Desa
-          </h1>
+        <div className="container mx-auto py-12 px-4">
           <InfographicsClient data1={infographic1} data2={infographic2} />
         </div>
       </main>

@@ -1,6 +1,12 @@
 import React from 'react';
+import { Metadata } from 'next';
 import { fetchAPI } from '@/lib/api'; // Sesuaikan path jika perlu
 import ProfilClient from '@/components/ProfilClient'; // Komponen UI yang akan kita buat
+
+export const metadata: Metadata = {
+  title: " Profil Desa - Website Resmi Desa Gaya Baru",
+  description: "Website Resmi Desa Gaya Baru",
+};
 
 async function getProfilData() {
   try {
@@ -39,11 +45,6 @@ export default async function ProfilPage() {
         {/* Meneruskan data ke Client Component */}
         <ProfilClient data={profilData} />
       </main>
-      <footer className="bg-sky-900 text-white py-8">
-        <div className="container mx-auto text-center">
-            <p>© {new Date().getFullYear()} Pemerintah Desa Gaya Baru. All rights reserved.</p>
-        </div>
-      </footer>
     </>
   );
 }

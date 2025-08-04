@@ -14,14 +14,15 @@ const navItems: NavItem[] = [
   { label: 'Profil Desa', href: '/profil-desa' },
   { label: 'Infografis', href: '/infografis' },
   { label: 'Berita', href: '/berita' },
+  { label: 'Galeri', href: '/galeri' },
 ];
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="bg-sky-800 text-gray-800 shadow-md sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="bg-gradient-to-r from-cyan-400 via-sky-600 via-15% to-sky-800 text-white shadow-md sticky top-0 z-50">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-4">
         <div className="flex items-center justify-between h-24">
           
           {/* Logo dan Nama Desa */}
@@ -35,10 +36,10 @@ const Header: React.FC = () => {
                           height={38}
                 />
                 <div className="flex flex-col">
-                  <span className="font-bold text-xl text-white">
+                  <span className="font-bold font-heading2 text-xl">
                     Desa Gaya Baru
                   </span>
-                  <span className="font-medium text-sm text-white">
+                  <span className="font-medium font-body2 text-sm tracking-wide">
                     Kabupaten Buton Selatan
                   </span>
                 </div>
@@ -46,13 +47,13 @@ const Header: React.FC = () => {
           </div>
 
           {/* Navigation Menu for Desktop */}
-          <nav className="hidden md:flex">
+          <nav className="hidden lg:flex">
             <ul className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <Link 
                     href={item.href} 
-                    className="font-bold text-gray-100 hover:text-sky-400 transition-colors duration-300"
+                    className="font-bold font-heading2 text-lg text-gray-100 hover:text-cyan-300 hover:border-b-1 hover:border-cyan-300 transition-colors duration-300"
                   >
                     {item.label}
                   </Link>
@@ -62,10 +63,10 @@ const Header: React.FC = () => {
           </nav>
 
           {/* Hamburger for Mobile */}
-          <div className="md:hidden flex items-center">
+          <div className="lg:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
+              className="inline-flex h-[3em] w-[3em] items-center justify-center p-2 rounded-md text-gray-100 hover:text-gray-800 hover:bg-sky-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-sky-500"
               aria-expanded={isMenuOpen}
             >
               <span className="sr-only">Buka menu utama</span>
@@ -85,7 +86,7 @@ const Header: React.FC = () => {
 
       {/* Menu Dropdown for Mobile */}
       {isMenuOpen && (
-        <div className="md:hidden" id="mobile-menu">
+        <div className="lg:hidden" id="mobile-menu">
           <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3 text-center">
             {navItems.map((item) => (
               <li key={item.label}>

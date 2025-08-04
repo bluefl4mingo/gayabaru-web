@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Header from '../components/Header'; 
 import { fetchAPI } from '../lib/api';
 import HomePageClient from '../components/HomePageClient';
 
@@ -20,12 +19,6 @@ export default async function HomePage() {
       <main>
         <HomePageClient homepage={homepage} gallery={gallery} />
       </main>
-
-      <footer className="bg-sky-900 text-white py-8">
-        <div className="container mx-auto text-center">
-            <p>&copy; {new Date().getFullYear()} Pemerintah Desa Gaya Baru. All rights reserved.</p>
-        </div>
-      </footer>
     </>
   );
 }
