@@ -23,7 +23,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-gradient-to-r from-cyan-400 via-sky-600 via-15% to-sky-800 text-white shadow-lg sticky top-0 z-50 backdrop-blur-sm">
-      <div className="container mx-auto px-5 sm:px-6 lg:px-4">
+      <div className="container mx-auto px-6 md:px-5 lg:px-3 xl:px-5">
         <div className="flex items-center justify-between h-20 md:h-24">
           
           {/* Logo dan Nama Desa */}
@@ -76,7 +76,7 @@ const Header: React.FC = () => {
                 >
                   <Link 
                     href={item.href} 
-                    className="font-bold font-heading2 text-lg text-gray-100 hover:text-cyan-300 hover:border-b-1 hover:border-cyan-300 transition-all duration-300 pb-1 relative group"
+                    className="font-bold font-heading2 xl:text-lg text-gray-100 hover:text-cyan-300 hover:border-b-1 hover:border-cyan-300 transition-all duration-300 pb-1 relative group"
                   >
                     {item.label}
                     <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-300 transition-all duration-300 group-hover:w-full"></span>

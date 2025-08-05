@@ -210,7 +210,7 @@ export default function BeritaClient({ berita, pagination }: ClientProps) {
 
       {berita.length > 0 ? (
         <motion.div 
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid md:grid-cols-2 xl:grid-cols-3 gap-8"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}

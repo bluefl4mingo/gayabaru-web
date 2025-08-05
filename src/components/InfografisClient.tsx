@@ -99,7 +99,7 @@ const StatCard = ({ icon, title, value, unit }: { icon: React.ReactNode, title: 
             </motion.div>
             {/* DATA ROW */}
             <motion.div 
-              className="flex flex-col col-span-2 text-sm pl-[12%] md:pl-12 lg:pl-6 xl:pl-12 py-4 justify-center"
+              className="flex flex-col col-span-2 text-sm pl-12 sm:pl-[12%] md:pl-12 lg:pl-6 xl:pl-12 py-4 justify-center"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.5}}
@@ -283,7 +283,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
 
       {/* 1. Jumlah Penduduk & KK */}
       <Section title="• Jumlah Penduduk & Kepala Keluarga">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           <StatCard icon={<Users size={75} stroke="white" className="" />} title="Total Penduduk" value={data1.totalPenduduk} unit="Jiwa" />
           <StatCard icon={<Mars size={75} stroke="white" className="" />} title="Laki-laki" value={data1.lakiLaki} unit="Jiwa" />
           <StatCard icon={<Venus size={75} stroke="white" className="" />} title="Perempuan" value={data1.perempuan} unit="Jiwa" />
@@ -588,7 +588,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
 
        {/* 6. Berdasarkan Agama */}
        <Section title="• Berdasarkan Agama">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           <StatCard icon={<MdMosque size={75} fill="white" className="" />} title="Islam" value={data1.islam} unit="Jiwa" />
           <StatCard icon={<MdChurch size={75} fill="white" className="" />} title="Kristen" value={data1.kristen} unit="Jiwa" />
           <StatCard icon={<BiSolidBible size={75} fill="white" className="" />} title="Katolik" value={data1.katolik} unit="Jiwa" />
