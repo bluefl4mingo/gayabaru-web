@@ -170,7 +170,7 @@ const Header: React.FC = () => {
                   }
                 }}
               >
-                {navItems.map((item, index) => (
+                {navItems.map((item) => (
                   <motion.li 
                     key={item.label}
                     variants={{

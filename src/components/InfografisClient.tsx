@@ -182,7 +182,15 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
   ];
 
   // Custom tooltip component
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: {
+    active?: boolean;
+    payload?: Array<{
+      name: string;
+      value: number;
+      dataKey: string;
+    }>;
+    label?: string;
+  }) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
@@ -197,7 +205,13 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
   };
 
   // Custom pie chart tooltip
-  const CustomPieTooltip = ({ active, payload }: any) => {
+  const CustomPieTooltip = ({ active, payload }: {
+    active?: boolean;
+    payload?: Array<{
+      name: string;
+      value: number;
+    }>;
+  }) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
@@ -374,7 +388,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
                       paddingAngle={3}
                       animationBegin={0}
                       animationDuration={1500}
-                      label={({ name, percent }) => `${(percent * 100).toFixed(1)}%`}
+                      label={({ percent }) => `${(percent * 100).toFixed(1)}%`}
                       labelLine={false}
                     >
                       {populationByDusun.map((entry, index) => (
@@ -433,7 +447,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
                       paddingAngle={3}
                       animationBegin={200}
                       animationDuration={1500}
-                      label={({ name, percent }) => `${(percent * 100).toFixed(1)}%`}
+                      label={({ percent }) => `${(percent * 100).toFixed(1)}%`}
                       labelLine={false}
                     >
                       {kkByDusun.map((entry, index) => (
