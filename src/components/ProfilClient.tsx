@@ -44,7 +44,7 @@ const MapWithNoSSR = dynamic(() => import('@/components/Map'), {
 
 const Section = ({ title, children, className }: { title?: string, children: React.ReactNode, className?: string }) => (
     <motion.div 
-      className={`py-16 md:py-20 ${className || ''}`}
+      className={`py-10 md:py-20 ${className || ''}`}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
@@ -53,7 +53,7 @@ const Section = ({ title, children, className }: { title?: string, children: Rea
         <div className="container mx-auto px-4">
             {title && (
                 <motion.h2 
-                  className="text-3xl md:text-4xl font-bold font-heading2 text-left text-sky-800 tracking-tight mb-12"
+                  className="text-xl lg:text-4xl font-bold font-heading2 text-left text-sky-800 tracking-tight mb-6 lg:mb-12"
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -158,26 +158,26 @@ export default function ProfilClient({ data }: ClientProps) {
         <div className="grid md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
             <Card>
-              <CardHeader><CardTitle className="text-2xl md:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Visi</CardTitle></CardHeader>
-              <CardContent className="prose text-lg/6 text-gray-700 text-justify font-medium font-body2 max-w-none">
+              <CardHeader><CardTitle className="text-xl lg:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Visi</CardTitle></CardHeader>
+              <CardContent className="prose text-md/6 lg:text-lg/6 text-gray-700 text-justify font-medium font-body2 max-w-none">
                 {data.visi && <BlocksRenderer content={data.visi} />}
               </CardContent>
             </Card>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
             <Card>
-              <CardHeader><CardTitle className="text-2xl md:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Misi</CardTitle></CardHeader>
-              <CardContent className="prose text-lg text-gray-700 font-medium font-body2 max-w-none">
+              <CardHeader><CardTitle className="text-xl lg:text-3xl text-center font-bold font-heading2 text-sky-800 tracking-tight">Misi</CardTitle></CardHeader>
+              <CardContent className="prose lg:text-lg text-gray-700 font-medium font-body2 max-w-none">
                 {data.misi && <BlocksRenderer content={data.misi} />}
               </CardContent>
             </Card>
@@ -191,12 +191,12 @@ export default function ProfilClient({ data }: ClientProps) {
           <motion.div 
             className="text-center"
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
           >
             <motion.h3 
-              className="text-xl font-semibold font-body2 mb-4 text-slate-700 tracking-tight"
+              className="lg:text-xl font-semibold font-body2 mb-4 text-slate-700 tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
@@ -229,7 +229,7 @@ export default function ProfilClient({ data }: ClientProps) {
             viewport={{ once: true }}
           >
             <motion.h3 
-              className="text-xl font-semibold font-body2 mb-4 text-slate-700 tracking-tight"
+              className="lg:text-xl font-semibold font-body2 mb-4 text-slate-700 tracking-tight"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.4 }}
@@ -268,7 +268,7 @@ export default function ProfilClient({ data }: ClientProps) {
             viewport={{ once: true }}
           >
             <Card>
-              <CardContent className="h-[350px] p-6 space-y-5">
+              <CardContent className="h-[220px] lg:h-[350px] lg:p-6 space-y-5">
                 {/* Batas Desa */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -276,10 +276,10 @@ export default function ProfilClient({ data }: ClientProps) {
                   transition={{ duration: 0.5, delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <h4 className="font-bold font-heading2 text-2xl mb-4 text-sky-800">• Batas Desa:</h4>
+                  <h4 className="font-bold font-heading2 lg:text-2xl mb-4 text-sky-800">• Batas Desa:</h4>
                   <div className="grid grid-cols-2 gap-y-4 gap-x-8">
                     <motion.div 
-                      className="font-body2 text-xl"
+                      className="font-body2 text-sm md:text-md lg:text-xl"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.4 }}
@@ -289,7 +289,7 @@ export default function ProfilClient({ data }: ClientProps) {
                       <p className="text-slate-800">{data.batasUtara}</p>
                     </motion.div>
                     <motion.div 
-                      className="font-body2 text-xl"
+                      className="font-body2 text-sm md:text-md lg:text-xl"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.5 }}
@@ -299,7 +299,7 @@ export default function ProfilClient({ data }: ClientProps) {
                       <p className="text-slate-800">{data.batasTimur}</p>
                     </motion.div>
                     <motion.div 
-                      className="font-body2 text-xl"
+                      className="font-body2 text-sm md:text-md lg:text-xl"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.6 }}
@@ -309,7 +309,7 @@ export default function ProfilClient({ data }: ClientProps) {
                       <p className="text-slate-800">{data.batasSelatan}</p>
                     </motion.div>
                     <motion.div 
-                      className="font-body2 text-xl"
+                      className="font-body2 text-sm md:text-md lg:text-xl"
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.4, delay: 0.7 }}
@@ -338,8 +338,8 @@ export default function ProfilClient({ data }: ClientProps) {
                   transition={{ duration: 0.5, delay: 0.9 }}
                   viewport={{ once: true }}
                 >
-                  <h4 className="font-bold font-heading2 text-2xl text-sky-800">• Luas Desa:</h4>
-                  <p className="text-slate-600 font-body2 font-medium text-2xl">{data.luasDesa.toLocaleString('id-ID')} km²</p>
+                  <h4 className="font-bold font-heading2 lg:text-2xl text-sky-800">• Luas Desa:</h4>
+                  <p className="text-slate-600 font-body2 font-medium lg:text-2xl">{data.luasDesa.toLocaleString('id-ID')} km²</p>
                 </motion.div>
 
               </CardContent>
@@ -377,7 +377,7 @@ export default function ProfilClient({ data }: ClientProps) {
           >
             {/* Header with gradient background */}
             <motion.div 
-              className={`relative h-24 bg-gradient-to-r ${currentMap.color} flex items-center justify-between px-8`}
+              className={`relative h-24 bg-gradient-to-r ${currentMap.color} flex items-center justify-between px-4 lg:px-8`}
               key={currentMapIndex}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -385,7 +385,7 @@ export default function ProfilClient({ data }: ClientProps) {
             >
               <div className="text-white">
                 <motion.h3 
-                  className="text-2xl md:text-3xl font-bold font-heading2"
+                  className="md:text-xl lg:text-2xl font-bold font-heading2"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
@@ -393,7 +393,7 @@ export default function ProfilClient({ data }: ClientProps) {
                   {currentMap.title}
                 </motion.h3>
                 <motion.p 
-                  className="text-white/90 font-body2 text-lg"
+                  className="text-white/90 font-body2 text-sm lg:text-lg"
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 }}
@@ -466,20 +466,6 @@ export default function ProfilClient({ data }: ClientProps) {
               </div>
             </div>
 
-            {/* Map indicators */}
-            <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-              {maps.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentMapIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentMapIndex
-                      ? 'bg-white shadow-lg scale-125'
-                      : 'bg-white/50 hover:bg-white/70'
-                  }`}
-                />
-              ))}
-            </div>
           </motion.div>
 
           {/* Map Grid Preview */}
@@ -576,7 +562,7 @@ export default function ProfilClient({ data }: ClientProps) {
             </div>
 
             {/* Navigation Controls */}
-            <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
+            <div className="absolute top-1/5 md:top-30 lg:top-1/2 left-4 transform -translate-y-1/2">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -585,10 +571,10 @@ export default function ProfilClient({ data }: ClientProps) {
                 className="p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors duration-200"
                 title="Previous Map"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-2 h-2 md:w-4 md:h-4 lg:w-6 lg:h-6" />
               </button>
             </div>
-            <div className="absolute top-1/2 right-4 transform -translate-y-1/2">
+            <div className="absolute top-1/5 md:top-30 lg:top-1/2 right-4 transform -translate-y-1/2">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
@@ -597,7 +583,7 @@ export default function ProfilClient({ data }: ClientProps) {
                 className="p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors duration-200"
                 title="Next Map"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-2 h-2 md:w-4 md:h-4 lg:w-6 lg:h-6" />
               </button>
             </div>
 

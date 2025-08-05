@@ -53,7 +53,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
       transition={{ duration: 1, ease: "easeOut" }}
     >
       <div className="absolute inset-0 bg-black/30"></div>
-      <div className="relative container my-auto mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative container my-auto mx-auto px-6 sm:px-8 lg:px-8">
         <motion.div 
           className="max-w-2xl text-white"
           initial={{ opacity: 0, y: 80 }}
@@ -61,7 +61,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
         >
           <motion.h1 
-            className="text-3xl md:text-5xl font-medium font-body2 text-shadow-lg/50"
+            className="text-xl md:text-2xl lg:text-5xl font-medium font-body2 text-shadow-lg/50"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
@@ -69,12 +69,13 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
             Selamat Datang di
           </motion.h1>
           <motion.p 
-            className="text-5xl md:text-7xl mt-2 font-bold font-heading2 text-shadow-lg/70"
+            className="text-3xl md:text-5xl lg:text-7xl mt-1 md:mt-2 font-bold font-heading2 text-shadow-lg/70"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
-            Website Resmi Desa Gaya Baru
+            Website Resmi <br />
+            Desa Gaya Baru
           </motion.p>
         </motion.div>
       </div>
@@ -117,7 +118,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
               {icon}
             </motion.div>
           )}
-          <h2 className={`text-3xl md:text-4xl font-bold font-heading2 text-sky-800 tracking-tight`}>
+          <h2 className={`text-xl lg:text-4xl font-bold font-heading2 text-sky-800 tracking-tight`}>
             {title}
           </h2>
         </motion.div>
@@ -134,7 +135,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
   );
   
   const VideoSection = () => (
-    <Section title="Video Profil Desa Gaya Baru" className="bg-sky-50" titleAlign="center" icon={<PiVideo className="inline-block w-10 h-10 text-sky-800" />}>
+    <Section title="Video Profil Desa Gaya Baru" className="bg-sky-50" titleAlign="center" icon={<PiVideo className="inline-block w-6 h-6 lg:w-10 lg:h-10 text-sky-800" />}>
       <div className="max-w-6xl mx-auto">
         <motion.div 
           className="aspect-video w-full rounded-lg shadow-2xl overflow-hidden"
@@ -157,7 +158,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
   );
   
   const GallerySection: React.FC<{ images: { photos: StrapiMedia[] } }> = ({ images }) => (
-    <Section title="Galeri Foto" titleAlign="left" icon={<PiImagesSquare className="inline-block w-10 h-10 text-sky-800"/>} className="bg-sky-50">
+    <Section title="Galeri Foto" titleAlign="left" icon={<PiImagesSquare className="inline-block w-6 h-6 lg:w-10 lg:h-10 text-sky-800"/>} className="bg-sky-50">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -205,7 +206,7 @@ const HeroSection = ({ imageUrl }: { imageUrl: string }) => (
         transition={{ duration: 0.5, delay: 0.4 }}
         viewport={{ once: true }}
       >
-        <Button asChild={true} variant="ghost" size="lg" className="mt-6 font-heading2 font-bold text-lg text-sky-800 border-gray-800 hover:bg-sky-100">
+        <Button asChild={true} variant="ghost" size="lg" className="md:mt-6 font-heading2 font-bold md:text-lg text-sky-800 border-gray-800 hover:bg-sky-100">
           <Link href="/galeri" className="">
             <PiDotsThreeOutlineFill size={40} className="inline-block text-lg w-10 h-10 mr-1" />
             Lihat Foto Lebih Banyak
@@ -233,7 +234,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
               <div className="container mx-auto px-4 sm:px-10. lg:px-16">
                 {/* TITLE */}
                 <motion.div 
-                  className="flex pb-3 items-center space-x-4 border-b"
+                  className="flex pb-3 items-center space-x-2 border-b"
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
@@ -245,14 +246,14 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                     transition={{ duration: 0.6, delay: 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <LuScrollText className="inline-block w-8 h-8 text-sky-800 mr-3" />
+                    <LuScrollText className="inline-block w-6 h-6 lg:w-8 lg:h-8 text-sky-800 mr-0 lg:mr-3" />
                   </motion.div>
-                  <h1 className="text-4xl font-bold font-heading2 tracking-tight text-sky-800">
+                  <h1 className="text-xl lg:text-4xl font-bold font-heading2 tracking-tight text-sky-800">
                     Deskripsi Desa Gaya Baru
                   </h1>
                 </motion.div>
                 {/* Content */}
-                <div className="grid grid-cols-3 pt-6 gap-6 items-start justify-center h-full">
+                <div className="grid lg:grid-cols-3 pt-6 gap-6 lg-items-start justify-center h-full">
                   {/* KOLOM KIRI */}
                   <motion.div 
                     className="flex flex-col col-span-2 items-center justify-center"
@@ -261,7 +262,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                     transition={{ duration: 0.7, delay: 0.4 }}
                     viewport={{ once: true }}
                   >
-                    <div className="prose lg:prose-xl font-body2 font-medium mx-auto pr-10 text-justify text-gray-700 text-lg">
+                    <div className="text-sm lg:text-lg lg:prose-xl font-body2 font-medium mx-auto pr-10 text-justify text-gray-700 text-lg">
                       {homepage.deskripsiDesa && <BlocksRenderer content={homepage.deskripsiDesa} />}
                     </div>
                   </motion.div>
@@ -278,7 +279,7 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
                       transition={{ duration: 0.3 }}
                     >
                       <Image
-                                className=""
+                                className="hidden lg:inline-block"
                                 src="/kabBusel.svg"
                                 alt="Logo Kabupaten Buton Selatan"
                                 width={400}
@@ -292,9 +293,9 @@ const HomePageClient: React.FC<HomePageClientProps> = ({ homepage, gallery }) =>
 
             <VideoSection />
 
-            <Section title="Peta Desa Gaya Baru" icon={<LuMapPinned className="inline-block w-10 h-10 text-sky-800" />} className="bg-sky-50">
+            <Section title="Peta Desa Gaya Baru" icon={<LuMapPinned className="inline-block w-6 h-6 lg:w-10 lg:h-10 text-sky-800" />} className="bg-sky-50">
               <motion.div 
-                className="relative z-10 h-[500px] w-full max-w-6xl mx-auto rounded-lg shadow-lg overflow-hidden"
+                className="relative z-10 h-[35vh] lg:h-[500px] w-full max-w-6xl mx-auto rounded-lg shadow-lg overflow-hidden"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.05 }}

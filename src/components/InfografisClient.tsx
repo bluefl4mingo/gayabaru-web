@@ -84,7 +84,7 @@ const StatCard = ({ icon, title, value, unit }: { icon: React.ReactNode, title: 
     transition={{ duration: 1, ease: "easeOut" }}
     viewport={{ once: true }}
   >
-    <Card className='p-0 h-[10em]'>
+    <Card className='p-0 lg:h-[10em]'>
       <div className="flex flex-col bg-white h-full rounded-lg">
           <div className="grid h-full grid-cols-3">
             {/* ICON ROW */}
@@ -99,14 +99,14 @@ const StatCard = ({ icon, title, value, unit }: { icon: React.ReactNode, title: 
             </motion.div>
             {/* DATA ROW */}
             <motion.div 
-              className="flex flex-col col-span-2 text-sm md:pl-12 lg:pl-6 xl:pl-12 py-4 justify-center"
+              className="flex flex-col col-span-2 text-sm pl-[12%] md:pl-12 lg:pl-6 xl:pl-12 py-4 justify-center"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 0.5}}
               viewport={{ once: true }}
             >
-              <span className="text-xl font-heading2 font-medium mb-3">{title}</span>
-              <span className="text-4xl text-sky-800/80 font-heading2 font-bold text-shadow-sm text-shadow-md">{value.toLocaleString('id-ID')}</span>
+              <span className="text-md lg:text-xl font-heading2 font-medium mb-3">{title}</span>
+              <span className="text-xl md:text-3xl lg:text-4xl text-sky-800/80 font-heading2 font-bold text-shadow-sm text-shadow-md">{value.toLocaleString('id-ID')}</span>
               <span className="font-body2 font-medium text-muted-foreground">{unit}</span>
             </motion.div>
           </div>
@@ -125,7 +125,7 @@ const Section = ({ title, children }: { title: string, children: React.ReactNode
     viewport={{ once: true, margin: "-100px" }}
   >
     <motion.h2 
-      className="text-2xl font-bold font-heading2 mb-6 text-sky-800 tracking-tight"
+      className="text-lg lg:text-2xl font-bold font-heading2 mb-6 text-sky-800 tracking-tight"
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 0.2 }}
@@ -167,7 +167,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
     { name: 'Dusun Jaya', value: data1.kkJaya },
     { name: 'Dusun Lantai Dua', value: data1.kkLtd },
   ];
-  const PIE_COLORS = ['#3fb1e6ff', '#ce8ec9ff', '#36ca99ff'];
+  const PIE_COLORS = ['#0ea5e9', '#06b6d4', '#10b981'];
 
   const educationData = [
     { name: 'Tidak Sekolah', jumlah: data2.uneducated },
@@ -180,6 +180,36 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
     { name: 'S3', jumlah: data2.S3 },
     { name: 'Lainnya', jumlah: data2.otherEducation },
   ];
+
+  // Custom tooltip component
+  const CustomTooltip = ({ active, payload, label }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
+          <p className="font-body2 font-semibold text-gray-800">{`${label}`}</p>
+          <p className="text-sky-600">
+            {`${payload[0].name}: ${payload[0].value.toLocaleString('id-ID')} jiwa`}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  // Custom pie chart tooltip
+  const CustomPieTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="bg-white p-4 border border-gray-200 rounded-lg shadow-lg">
+          <p className="font-heading2 ont-semibold text-gray-800">{payload[0].name}</p>
+          <p className="text-sky-600">
+            {`${payload[0].value.toLocaleString('id-ID')} jiwa`}
+          </p>
+        </div>
+      );
+    }
+    return null;
+  };
 
   const jobData = [
     { pekerjaan: 'Petani Pemilik Lahan', jumlah: data2.petaniPemilikLahan },
@@ -211,7 +241,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
         transition={{ duration: 0.6, delay: 0.2 }}
       >
         <motion.div 
-          className="flex items-center space-x-4"
+          className="flex items-center space-x-2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -221,14 +251,14 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
             animate={{ opacity: 1, rotate: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <ChartColumnIncreasing className="inline-block w-8 h-8 text-sky-800 mr-3" />
+            <ChartColumnIncreasing className="inline-block w-6 h-6 lg:w-8 lg:h-8 text-sky-800 lg:mr-3" />
           </motion.div>
-          <h1 className="text-4xl font-bold font-heading2 tracking-tight text-sky-800">
+          <h1 className="text-xl lg:text-4xl font-bold font-heading2 tracking-tight text-sky-800">
             Infografis Kependudukan Desa
           </h1>
         </motion.div>
         <motion.p 
-          className="mt-2 max-w-4xl text-lg text-slate-700 font-body2 font-medium"
+          className="mt-2 max-w-4xl text-xs md:text-sm lg:text-lg text-slate-700 font-body2 font-medium"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
@@ -255,16 +285,49 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card>
-            <CardContent className="pt-6">
-              <ResponsiveContainer width="100%" height={450}>
-                <BarChart data={ageData} layout="vertical" margin={{ left: 20 }}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis type="number" fontFamily="Poppins"/>
-                  <YAxis type="category" dataKey="name" width={60} fontFamily="Poppins"/>
-                  <Tooltip cursor={{ fill: 'rgba(241, 245, 249, 0.7)' }} />
-                  <Legend />
-                  <Bar dataKey="jumlah" fill="#0ea5e9" name="Jumlah Jiwa" label={{ position: 'right', fill: '#1c363fff', fontWeight: 500 }} animationDuration={1500} />
+          <Card className="overflow-hidden bg-gradient-to-br from-slate-50 to-white shadow-lg border-0">
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <h3 className="text-lg lg:text-xl font-heading2 font-bold text-gray-800 mb-1">Distribusi Usia Penduduk</h3>
+                <p className="font-body2 text-gray-600 text-sm">Data demografi berdasarkan kelompok usia</p>
+              </div>
+              <ResponsiveContainer width="100%" height={500}>
+                <BarChart 
+                  data={ageData} 
+                  layout="vertical" 
+                  margin={{ left: 20, right: 30, top: 20, bottom: 20 }}
+                >
+                  <defs>
+                    <linearGradient id="ageGradient" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="5%" stopColor="#0ea5e9" stopOpacity={0.8}/>
+                      <stop offset="95%" stopColor="#0284c7" stopOpacity={0.9}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.6} />
+                  <XAxis 
+                    type="number" 
+                    fontFamily="Inter, sans-serif"
+                    fontSize={13}
+                    stroke="#64748b"
+                    tickFormatter={(value) => value.toLocaleString('id-ID')}
+                  />
+                  <YAxis 
+                    type="category" 
+                    dataKey="name" 
+                    width={40} 
+                    fontFamily="Inter, sans-serif"
+                    fontSize={13}
+                    stroke="#64748b"
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar 
+                    dataKey="jumlah" 
+                    fill="url(#ageGradient)" 
+                    name="Jumlah Jiwa" 
+                    radius={[0, 6, 6, 0]}
+                    animationDuration={2000}
+                    animationBegin={300}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -280,44 +343,113 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
           >
-            <Card>
-              <CardHeader><CardTitle className="font-heading2">Populasi per Dusun</CardTitle></CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
+            <Card className="overflow-hidden bg-gradient-to-br from-blue-50 to-cyan-50 shadow-lg border-0 h-full">
+              <CardHeader className="pb-2">
+                <CardTitle className="font-heading2 font-bold text-lg lg:text-xl text-gray-800 tracking-tight flex items-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full mr-3"></div>
+                  Populasi per Dusun
+                </CardTitle>
+                <p className="font-body2 text-sm text-gray-600">Distribusi penduduk berdasarkan wilayah</p>
+              </CardHeader>
+              <CardContent className="pt-2">
+                <ResponsiveContainer width="100%" height={370}>
                   <PieChart>
-                    <Pie data={populationByDusun} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}>
+                    <defs>
+                      {PIE_COLORS.map((color, index) => (
+                        <linearGradient key={index} id={`populationGradient${index}`} x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="5%" stopColor={color} stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor={color} stopOpacity={1}/>
+                        </linearGradient>
+                      ))}
+                    </defs>
+                    <Pie 
+                      data={populationByDusun} 
+                      dataKey="value" 
+                      nameKey="name" 
+                      cx="50%" 
+                      cy="50%" 
+                      outerRadius={120}
+                      innerRadius={40}
+                      paddingAngle={3}
+                      animationBegin={0}
+                      animationDuration={1500}
+                      label={({ name, percent }) => `${(percent * 100).toFixed(1)}%`}
+                      labelLine={false}
+                    >
                       {populationByDusun.map((entry, index) => (
-                        <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                        <Cell 
+                          key={`cell-${index}`} 
+                          fill={`url(#populationGradient${index})`}
+                          stroke="#ffffff"
+                          strokeWidth={2}
+                        />
                       ))}
                     </Pie>
-                    <Tooltip />
-                    <Legend />
+                    <Tooltip content={<CustomPieTooltip />} />
+                    <Legend 
+                      wrapperStyle={{ paddingTop: '20px' }}
+                      iconType="circle"
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </CardContent>
             </Card>
           </motion.div>
+          
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.02 }}
           >
-            <Card>
-              <CardHeader><CardTitle className="font-heading2">Kepala Keluarga per Dusun</CardTitle></CardHeader>
-              <CardContent>
-                <ResponsiveContainer width="100%" height={300}>
+            <Card className="overflow-hidden bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg border-0 h-full">
+              <CardHeader className="pb-2">
+                <CardTitle className="font-heading2 font-bold text-lg lg:text-xl text-gray-800 tracking-tight flex items-center">
+                  <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full mr-3"></div>
+                  Kepala Keluarga per Dusun
+                </CardTitle>
+                <p className="font-body2 text-sm text-gray-600">Distribusi KK berdasarkan wilayah</p>
+              </CardHeader>
+              <CardContent className="pt-2">
+                <ResponsiveContainer width="100%" height={370}>
                   <PieChart>
-                    <Pie data={kkByDusun} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} label={({ name, percent }) => `${name} (${(percent * 100).toFixed(0)}%)`}>
-                      {kkByDusun.map((entry, index) =>  (
-                        <Cell key={`cell-${index}`} fill={PIE_COLORS[index % PIE_COLORS.length]} />
+                    <defs>
+                      {PIE_COLORS.map((color, index) => (
+                        <linearGradient key={index} id={`kkGradient${index}`} x1="0" y1="0" x2="1" y2="1">
+                          <stop offset="5%" stopColor={color} stopOpacity={0.8}/>
+                          <stop offset="95%" stopColor={color} stopOpacity={1}/>
+                        </linearGradient>
+                      ))}
+                    </defs>
+                    <Pie 
+                      data={kkByDusun} 
+                      dataKey="value" 
+                      nameKey="name" 
+                      cx="50%" 
+                      cy="50%" 
+                      outerRadius={120}
+                      innerRadius={40}
+                      paddingAngle={3}
+                      animationBegin={200}
+                      animationDuration={1500}
+                      label={({ name, percent }) => `${(percent * 100).toFixed(1)}%`}
+                      labelLine={false}
+                    >
+                      {kkByDusun.map((entry, index) => (
+                        <Cell 
+                          key={`cell-${index}`} 
+                          fill={`url(#kkGradient${index})`}
+                          stroke="#ffffff"
+                          strokeWidth={2}
+                        />
                       ))}
                     </Pie>
-                    <Tooltip />
-                    <Legend />
+                    <Tooltip content={<CustomPieTooltip />} />
+                    <Legend 
+                      wrapperStyle={{ paddingTop: '20px' }}
+                      iconType="circle"
+                    />
                   </PieChart>
                 </ResponsiveContainer>
               </CardContent>
@@ -334,16 +466,50 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
           transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
         >
-          <Card>
-            <CardContent className="pt-6">
-              <ResponsiveContainer width="100%" height={450}>
-                <BarChart data={educationData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" height={40}/>
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="jumlah" fill="#0ea5e9" name="Jumlah Jiwa" label={{ position: 'top', fill: '#1c363fff', fontWeight: 500 }} animationDuration={1500} />
+          <Card className="overflow-hidden bg-gradient-to-br from-violet-50 to-purple-50 shadow-lg border-0">
+            <CardContent className="p-8">
+              <div className="mb-6">
+                <h3 className="text-lg lg:text-xl font-heading2 font-bold text-gray-800 tracking-tight mb-2">Tingkat Pendidikan Penduduk</h3>
+                <p className="font-body2 text-gray-600 text-sm">Distribusi penduduk berdasarkan jenjang pendidikan</p>
+              </div>
+              <ResponsiveContainer width="100%" height={500}>
+                <BarChart 
+                  data={educationData}
+                  margin={{ left: 0, right: 30, top: 20, bottom: 20 }}
+                >
+                  <defs>
+                    <linearGradient id="educationGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#8b5cf6" stopOpacity={0.9}/>
+                      <stop offset="95%" stopColor="#a855f7" stopOpacity={0.7}/>
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" opacity={0.6} />
+                  <XAxis 
+                    dataKey="name" 
+                    height={80}
+                    fontFamily="Inter, sans-serif"
+                    fontSize={13}
+                    stroke="#64748b"
+                    angle={-45}
+                    textAnchor="end"
+                    interval={0}
+                  />
+                  <YAxis 
+                    width={40} 
+                    fontFamily="Inter, sans-serif"
+                    fontSize={13}
+                    stroke="#64748b"
+                    tickFormatter={(value) => value.toLocaleString('id-ID')}
+                  />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Bar 
+                    dataKey="jumlah" 
+                    fill="url(#educationGradient)" 
+                    name="Jumlah Jiwa" 
+                    radius={[6, 6, 0, 0]}
+                    animationDuration={2000}
+                    animationBegin={400}
+                  />
                 </BarChart>
               </ResponsiveContainer>
             </CardContent>
@@ -362,7 +528,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
               <Table className="border-1 bg-white">
                 <TableHeader>
                   <TableRow className="bg-sky-800/80 rounded-t-xl">
-                    <TableHead className="pl-15 py-3 font-heading2 font-semibold text-2xl text-white tracking-tight items-center">
+                    <TableHead className="pl-6 md:pl-15 py-3 font-heading2 font-semibold text-lg md:text-xl lg:text-2xl text-white tracking-tight items-center">
                       <motion.div
                         className="flex items-center"
                         initial={{ opacity: 0, x: -20 }}
@@ -374,7 +540,7 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
                         Pekerjaan
                       </motion.div>
                     </TableHead>
-                    <TableHead className="pr-15 font-heading2 font-semibold text-2xl text-white text-right tracking-tight">
+                    <TableHead className="pr-6 md:pr-15 font-heading2 font-semibold text-lg md:text-xl lg:text-2xl text-white text-right tracking-tight">
                       <motion.span
                         initial={{ opacity: 0, x: 20 }}
                         whileInView={{ opacity: 1, x: 0 }}
@@ -397,8 +563,8 @@ export default function InfographicsClient({ data1, data2 }: ClientProps) {
                       whileHover={{ backgroundColor: "rgba(14, 165, 233, 0.05)" }}
                       className="border-b"
                     >
-                      <TableCell className="pl-15 py-1 font-medium font-body2 text-lg text-gray-700 tracking-tight">{job.pekerjaan}</TableCell>
-                      <TableCell className="pr-25 font-medium font-body2 text-lg text-gray-700 text-right">{job.jumlah.toLocaleString('id-ID')}</TableCell>
+                      <TableCell className="pl-6 md:pl-15 py-1 font-medium font-body2 md:text-lg text-gray-700 tracking-tight">{job.pekerjaan}</TableCell>
+                      <TableCell className="pr-10 md:pr-25 font-medium font-body2 md:text-lg text-gray-700 text-right">{job.jumlah.toLocaleString('id-ID')}</TableCell>
                     </motion.tr>
                   ))}
                 </TableBody>

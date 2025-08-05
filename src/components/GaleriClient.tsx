@@ -1,4 +1,3 @@
-// components/GaleriClient.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -87,7 +86,7 @@ export default function GaleriClient({ gallery }: ClientProps) {
         viewport={{ once: true }}
       >
         <motion.div 
-          className="flex items-center space-x-4"
+          className="flex items-center space-x-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
@@ -99,14 +98,14 @@ export default function GaleriClient({ gallery }: ClientProps) {
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
           >
-            <Images className="inline-block w-8 h-8 text-sky-800 mr-3" />
+            <Images className="inline-block w-6 h-6 lg:w-8 lg:h-8 text-sky-800 lg:mr-3" />
           </motion.div>
-          <h1 className="text-4xl font-bold font-heading2 tracking-tight text-sky-800">
+          <h1 className="text-xl lg:text-4xl font-bold font-heading2 tracking-tight text-sky-800">
             Galeri Foto
           </h1>
         </motion.div>
         <motion.p 
-          className="mt-2 max-w-4xl text-lg text-slate-700 font-body2 font-medium"
+          className="mt-2 max-w-4xl text-xs md:text-sm lg:text-lg text-slate-700 font-body2 font-medium"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}

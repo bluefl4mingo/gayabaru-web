@@ -126,7 +126,7 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
         <CardContent className="px-4 flex-grow">
           <Link href={`/berita/${article.slug}`}>
             <motion.h3 
-              className="text-lg font-heading2 font-bold mb-2 line-clamp-2 hover:text-sky-700"
+              className="lg:text-lg font-heading2 font-bold mb-2 line-clamp-2 hover:text-sky-700"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.2 }}
@@ -136,7 +136,7 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
             </motion.h3>
           </Link>
           <motion.p 
-            className="text-sm text-slate-600 font-body2 line-clamp-3 text-justify"
+            className="text-xs md:text-sm text-slate-600 font-body2 line-clamp-3 text-justify"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.3 }}
@@ -145,7 +145,7 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
             {excerpt}
           </motion.p>
         </CardContent>
-        <CardFooter className="pl-0 py-0 text-lg font-black font-body2 text-white mt-4">
+        <CardFooter className="pl-0 py-0 font-black font-body2 text-white mt-4">
           <motion.div 
             className="flex h-max max-w-xl px-4 py-3 bg-linear-to-b from-sky-800/80 to-cyan-600/60 rounded-tr-lg"
             initial={{ opacity: 0, x: -30 }}
@@ -155,7 +155,7 @@ const BeritaCard = ({ article, index }: { article: BeritaItem, index: number }) 
             whileHover={{ scale: 1.05 }}
           >
             <Calendar className="mr-2 inline-block w-5 h-5" />
-            <span className="tracking-tight line-clamp-2 text-shadow-lg">{formattedDate}</span>
+            <span className="lg:text-lg tracking-tight line-clamp-2 text-shadow-lg">{formattedDate}</span>
           </motion.div>
         </CardFooter>
       </Card>
@@ -182,7 +182,7 @@ export default function BeritaClient({ berita, pagination }: ClientProps) {
         transition={{ duration: 1, delay: 0.2 }}
       >
         <motion.div 
-          className="flex items-center space-x-4"
+          className="flex items-center space-x-2"
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -192,14 +192,14 @@ export default function BeritaClient({ berita, pagination }: ClientProps) {
             animate={{ opacity: 1, rotate: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
           >
-            <Newspaper className="inline-block w-8 h-8 text-sky-800 mr-3" />
+            <Newspaper className="inline-block w-6 h-6 lg:w-8 lg:h-8 text-sky-800 lg:mr-3" />
           </motion.div>
-          <h1 className="text-4xl font-bold font-heading2 tracking-tight text-sky-800">
+          <h1 className="text-xl lg:text-4xl font-bold font-heading2 tracking-tight text-sky-800">
             Berita Desa
           </h1>
         </motion.div>
         <motion.p 
-          className="mt-2 max-w-4xl text-lg text-slate-700 font-body2 font-medium"
+          className="mt-2 max-w-4xl text-xs md:text-sm lg:text-lg text-slate-700 font-body2 font-medium"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
